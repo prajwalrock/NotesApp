@@ -19,16 +19,18 @@ import com.notes.ui.screen.notelist.NoteListScreen
 import com.notes.ui.screen.notelist.NoteListViewModel
 import com.notes.ui.util.UiEvent
 
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             NotesRoomTheme {
+                
 
                 val navController = rememberNavController()
 
-                NavHost(navController = navController, startDestination = "note?id={id}") {
+                NavHost(navController = navController, startDestination = Route.noteList) {
                     composable(route = Route.noteList) {
                         val viewModel = hiltViewModel<NoteListViewModel>()
                         val noteList by viewModel.noteList.collectAsStateWithLifecycle()
@@ -44,9 +46,7 @@ class MainActivity : ComponentActivity() {
                                 )
                             },
                             onAddNoteClick = {
-                                navController.navigate(
-                                    Route.note
-                                )
+                                navController.navigate(Route.note)
                             }
                         )
                     }

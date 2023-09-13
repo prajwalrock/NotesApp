@@ -66,6 +66,7 @@ fun NoteScreen(
                     horizontal = 20.dp,
                     vertical = 15.dp
                 ),
+            horizontalAlignment =Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ){
             OutlinedTextField(
