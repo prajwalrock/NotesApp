@@ -12,13 +12,11 @@ class NoteRepositoryImpl(
     private val dao: NoteDao
 ) : NoteRepository {
     override fun getAllNotes(): Flow<List<Note>> {
-        return dao.getAllNotes()
-            .map { notes ->
+        return dao.getAllNotes().map { notes -> //I'm confused here how this is working "map" keyword
                 notes.map {
                     it.asExternalModel()
                 }
-
-            }
+        }
     }
 
     override suspend fun getNoteById(id: Int): Note? {
